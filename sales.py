@@ -6,16 +6,13 @@ def get_random_sentence():
     Returns a random sentence from a predefined list.
     """
     sentences = [
-        "The quick brown fox jumps over the lazy dog.",
-        "Never underestimate the power of a good book.",
-        "The early bird catches the worm.",
-        "Technology has revolutionized the way we live and work.",
-        "Practice makes perfect, especially in typing.",
-        "The sun always shines brightest after the rain.",
-        "Imagination is more important than knowledge.",
-        "The greatest glory in living lies not in never falling, but in rising every time we fall.",
-        "The only way to do great work is to love what you do.",
-        "Success is not final, failure is not fatal: it is the courage to continue that counts."
+        "You are winning Felix Sindani",
+        "You are a big thinker Felix, so think big about everything",
+        "You look good Felix and feel good, stay that way",
+        "You have the ability to do a first calss job so do a first class job",
+        "Discipline is not weakness",
+        "You were a great fello yestarday, and are going to be an even greater fellow today",
+        "Now go to it Felix, go forward",
     ]
     return random.choice(sentences)
 
@@ -56,9 +53,9 @@ def typing_test_game():
     """
     Main function to run the typing test game.
     """
-    print("Welcome to the Typing Test Game!")
+    print("Lets do this Felix")
     print("You will be given a sentence to type. Type it as fast and accurately as you can.")
-    input("Press Enter to start...")
+    input("Finya Enter Mkuu...")
 
     while True:
         sentence_to_type = get_random_sentence()
