@@ -1,0 +1,89 @@
+import time
+import random
+
+def get_random_sentence():
+    """
+    Returns a random sentence from a predefined list.
+    """
+    sentences = [
+        "The quick brown fox jumps over the lazy dog.",
+        "Never underestimate the power of a good book.",
+        "The early bird catches the worm.",
+        "Technology has revolutionized the way we live and work.",
+        "Practice makes perfect, especially in typing.",
+        "The sun always shines brightest after the rain.",
+        "Imagination is more important than knowledge.",
+        "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        "The only way to do great work is to love what you do.",
+        "Success is not final, failure is not fatal: it is the courage to continue that counts."
+    ]
+    return random.choice(sentences)
+
+def calculate_wpm(start_time, end_time, typed_text):
+    """
+    Calculates Words Per Minute (WPM).
+    WPM = (Number of characters / 5) / Time taken in minutes
+    """
+    time_taken_seconds = end_time - start_time
+    time_taken_minutes = time_taken_seconds / 60
+    words_typed = len(typed_text.split()) # Count words based on spaces
+    
+    if time_taken_minutes <= 0:
+        return 0
+    
+    wpm = words_typed / time_taken_minutes
+    return round(wpm)
+
+def calculate_accuracy(original_text, typed_text):
+    """
+    Calculates typing accuracy as a percentage.
+    Compares character by character.
+    """
+    correct_characters = 0
+    min_length = min(len(original_text), len(typed_text))
+
+    for i in range(min_length):
+        if original_text[i] == typed_text[i]:
+            correct_characters += 1
+    
+    if len(original_text) == 0:
+        return 0
+        
+    accuracy = (correct_characters / len(original_text)) * 100
+    return round(accuracy, 2)
+
+def typing_test_game():
+    """
+    Main function to run the typing test game.
+    """
+    print("Welcome to the Typing Test Game!")
+    print("You will be given a sentence to type. Type it as fast and accurately as you can.")
+    input("Press Enter to start...")
+
+    while True:
+        sentence_to_type = get_random_sentence()
+        print("\n----------------------------------------------------")
+        print("Type this sentence:")
+        print(f"\"{sentence_to_type}\"")
+        print("----------------------------------------------------")
+
+        start_time = time.time()
+        user_input = input("Your typing: ")
+        end_time = time.time()
+
+        wpm = calculate_wpm(start_time, end_time, user_input)
+        accuracy = calculate_accuracy(sentence_to_type, user_input)
+
+        print("\n--- Results ---")
+        print(f"Time taken: {round(end_time - start_time, 2)} seconds")
+        print(f"Words Per Minute (WPM): {wpm}")
+        print(f"Accuracy: {accuracy}%")
+        print("---------------")
+
+        play_again = input("\nDo you want to play again? (yes/no): ").lower()
+        if play_again != 'yes':
+            print("Thanks for playing! Goodbye!")
+            break
+
+if __name__ == "__main__":
+    typing_test_game()
